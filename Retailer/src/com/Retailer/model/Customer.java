@@ -33,6 +33,12 @@ public class Customer {
     @Column(name = "birth")
     Date birthDate;
 
+    @Column(name = "username")  
+    String username;
+    
+    @Column(name = "password")  
+    String password;
+    
 	public int getId() {
 		return id;
 	}
@@ -79,6 +85,22 @@ public class Customer {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
     
     
