@@ -59,14 +59,14 @@ public class VendorProductDao {
           
     }
     
-    public List<VendorProduct> selectBookByString(String param, String value)  {  
+    public List<VendorProduct> selectVendorProductByString(String param, String value)  {  
         List<VendorProduct> VendorProducts = new ArrayList<VendorProduct>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From BooksModel u where u."+ param + "='" + value+"'";
+        String hqlString = " From VendorProduct u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
@@ -85,13 +85,13 @@ public class VendorProductDao {
 
     }
     
-    public List<VendorProduct> selectBookByInt(String param, int value)  {  
+    public List<VendorProduct> selectVendorProductByInt(String param, int value)  {  
         List<VendorProduct> VendorProducts = new ArrayList<VendorProduct>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From BooksModel u where u."+ param + "='" + value +"'";
+        String hqlString = "From VendorProduct u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
         	VendorProduct u = (VendorProduct) iterator.next();  

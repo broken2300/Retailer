@@ -59,14 +59,14 @@ public class StoreLogDao {
           
     }
     
-    public List<StoreLog> selectBookByString(String param, String value)  {  
+    public List<StoreLog> selectStoreLogByString(String param, String value)  {  
         List<StoreLog> StoreLogs = new ArrayList<StoreLog>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From BooksModel u where u."+ param + "='" + value+"'";
+        String hqlString = " From StoreLog u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
@@ -85,13 +85,13 @@ public class StoreLogDao {
 
     }
     
-    public List<StoreLog> selectBookByInt(String param, int value)  {  
+    public List<StoreLog> selectStoreLogByInt(String param, int value)  {  
         List<StoreLog> storeLogs = new ArrayList<StoreLog>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From BooksModel u where u."+ param + "='" + value +"'";
+        String hqlString = "From StoreLog u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
         	StoreLog u = (StoreLog) iterator.next();  
@@ -102,4 +102,22 @@ public class StoreLogDao {
         return storeLogs;  
     }  
     
+    public List<StoreLog> selectStoreLogByDoubleInt(String param1, int value1, String param2, int value2)  {  
+        List<StoreLog> storeLogs = new ArrayList<StoreLog>();  
+        
+    	Session session = sessionFactory.openSession();
+    	//Transaction tc = (Transaction) session.beginTransaction();  
+        
+    	//TODO:
+    	
+        String hqlString = "From StoreLog u where u."+ param1 + "='" + value1 +"' and u."+ param2 + "='" + value2 + "'";
+        List list = session.createQuery(hqlString).list();  
+        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
+        	StoreLog u = (StoreLog) iterator.next();  
+        	storeLogs.add(u);  
+        }  
+       
+        session.close();  
+        return storeLogs;  
+    }  
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-11-10 20:25:55
+Date: 2017-11-15 22:51:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,8 +50,8 @@ CREATE TABLE `brand` (
 DROP TABLE IF EXISTS `credit`;
 CREATE TABLE `credit` (
   `cid` int(11) NOT NULL AUTO_INCREMENT,
-  `number` int(16) NOT NULL,
-  `CVS` varchar(5) NOT NULL,
+  `number` varchar(16) NOT NULL,
+  `address` varchar(5) NOT NULL,
   `uid` int(11) NOT NULL,
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -71,8 +71,10 @@ CREATE TABLE `customer` (
   `birth` date DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of customer
@@ -96,6 +98,21 @@ CREATE TABLE `product` (
 
 -- ----------------------------
 -- Records of product
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `staff`
+-- ----------------------------
+DROP TABLE IF EXISTS `staff`;
+CREATE TABLE `staff` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of staff
 -- ----------------------------
 
 -- ----------------------------
@@ -176,21 +193,4 @@ CREATE TABLE `vendorlog` (
 
 -- ----------------------------
 -- Records of vendorlog
--- ----------------------------
-
--- ----------------------------
--- Table structure for `vendorproduct`
--- ----------------------------
-DROP TABLE IF EXISTS `vendorproduct`;
-CREATE TABLE `vendorproduct` (
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
-  `vendor` int(11) NOT NULL,
-  `product` varchar(255) NOT NULL,
-  `prize` double NOT NULL,
-  `size` int(11) NOT NULL,
-  PRIMARY KEY (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vendorproduct
 -- ----------------------------

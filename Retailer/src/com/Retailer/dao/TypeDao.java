@@ -59,14 +59,14 @@ public class TypeDao {
           
     }
     
-    public List<Type> selectBookByString(String param, String value)  {  
+    public List<Type> selectTypeByString(String param, String value)  {  
         List<Type> Types = new ArrayList<Type>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From BooksModel u where u."+ param + "='" + value+"'";
+        String hqlString = " From Type u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
@@ -85,13 +85,13 @@ public class TypeDao {
 
     }
     
-    public List<Type> selectBookByInt(String param, int value)  {  
+    public List<Type> selectTypeByInt(String param, int value)  {  
         List<Type> Types = new ArrayList<Type>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From BooksModel u where u."+ param + "='" + value +"'";
+        String hqlString = "From Type u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
         	Type u = (Type) iterator.next();  

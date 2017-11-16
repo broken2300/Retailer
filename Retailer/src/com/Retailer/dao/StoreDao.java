@@ -59,14 +59,14 @@ public class StoreDao {
           
     }
     
-    public List<Store> selectBookByString(String param, String value)  {  
+    public List<Store> selectStoreByString(String param, String value)  {  
         List<Store> Stores = new ArrayList<Store>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From BooksModel u where u."+ param + "='" + value+"'";
+        String hqlString = " From Store u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
@@ -85,13 +85,13 @@ public class StoreDao {
 
     }
     
-    public List<Store> selectBookByInt(String param, int value)  {  
+    public List<Store> selectStoreByInt(String param, int value)  {  
         List<Store> stores = new ArrayList<Store>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From BooksModel u where u."+ param + "='" + value +"'";
+        String hqlString = "From Store u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
         	Store u = (Store) iterator.next();  

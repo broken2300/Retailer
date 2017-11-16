@@ -12,18 +12,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import com.Retailer.model.Product;
+import com.Retailer.model.Staff;
 
-@Repository("ProductDao")
-public class ProductDao {
+@Repository("StaffDao")
+public class StaffDao {
 
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
 
-	public void addProduct(Product Product)  {  
+	public void addStaff(Staff Staff)  {  
     	Session session = sessionFactory.openSession();
         Transaction tc = (Transaction) session.beginTransaction();  
-        session.save(Product);  
+        session.save(Staff);  
         try {  
             tc.commit();  
         } catch (Exception e) {  
@@ -32,11 +32,11 @@ public class ProductDao {
         session.close();  
     }  
   
-    public void delProduct(int ProductId) {  
+    public void delStaff(int StaffId) {  
     	Session session = sessionFactory.openSession();
         Transaction tc = (Transaction) session.beginTransaction();  
-        Product u = new Product();
-        u.setId(ProductId);
+        Staff u = new Staff();
+        u.setId(StaffId);
         session.delete(u);  
         try {  
             tc.commit();  
@@ -46,10 +46,10 @@ public class ProductDao {
         session.close();  
     }  
   
-    public void updateProduct(Product Product) {  
+    public void updateStaff(Staff Staff) {  
     	Session session = sessionFactory.openSession();
         Transaction tc = (Transaction) session.beginTransaction();  
-        session.update(Product);  
+        session.update(Staff);  
         try {  
             tc.commit();  
         } catch (Exception e) {  
@@ -59,23 +59,23 @@ public class ProductDao {
           
     }
     
-    public List<Product> selectProductByString(String param, String value)  {  
-        List<Product> Products = new ArrayList<Product>();  
+    public List<Staff> selectStaffByString(String param, String value)  {  
+        List<Staff> Staffes = new ArrayList<Staff>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From Product u where u."+ param + "='" + value+"'";
+        String hqlString = " From Staff u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
-	        	Product u = (Product) iterator.next();  
-	        	Products.add(u);  
+	        	Staff u = (Staff) iterator.next();  
+	        	Staffes.add(u);  
 	        }  
 	        tc.commit();
 	        session.close();  
-	        return Products;  
+	        return Staffes;  
         }
         else 
         {
@@ -84,21 +84,22 @@ public class ProductDao {
         }
 
     }
- 
-    public List<Product> selectProductByInt(String param, int value)  {  
-        List<Product> products = new ArrayList<Product>();  
+    
+    public List<Staff> selectStaffByInt(String param, int value)  {  
+        List<Staff> Staffes = new ArrayList<Staff>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From Product u where u."+ param + "='" + value +"'";
+        String hqlString = "From Staff u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
-        	Product u = (Product) iterator.next();  
-        	products.add(u);  
+        	Staff u = (Staff) iterator.next();  
+        	Staffes.add(u);  
         }  
        
         session.close();  
-        return products;  
+        return Staffes;  
     }  
+    
 }

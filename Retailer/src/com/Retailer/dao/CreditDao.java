@@ -59,14 +59,14 @@ public class CreditDao {
           
     }
     
-    public List<Credit> selectBookByString(String param, String value)  {  
+    public List<Credit> selectCreditByString(String param, String value)  {  
         List<Credit> Credits = new ArrayList<Credit>();  
         
     	Session session = sessionFactory.openSession();
 
     	Transaction tc = (Transaction) session.beginTransaction();  
         //tc.begin();
-        String hqlString = " From BooksModel u where u."+ param + "='" + value+"'";
+        String hqlString = " From Credit u where u."+ param + "='" + value+"'";
         if(session.createQuery(hqlString) != null){
 	        List list = session.createQuery(hqlString).list();  
 	        for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
@@ -85,13 +85,13 @@ public class CreditDao {
 
     }
     
-    public List<Credit> selectBookByInt(String param, int value)  {  
+    public List<Credit> selectCreditByInt(String param, int value)  {  
         List<Credit> credits = new ArrayList<Credit>();  
         
     	Session session = sessionFactory.openSession();
     	//Transaction tc = (Transaction) session.beginTransaction();  
         
-        String hqlString = "From BooksModel u where u."+ param + "='" + value +"'";
+        String hqlString = "From Credit u where u."+ param + "='" + value +"'";
         List list = session.createQuery(hqlString).list();  
         for (Iterator iterator = list.iterator(); iterator.hasNext();) {  
         	Credit u = (Credit) iterator.next();  
